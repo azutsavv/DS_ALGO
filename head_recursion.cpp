@@ -1,4 +1,4 @@
-v#include<bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 void fun(int n){
     if(n>0)
