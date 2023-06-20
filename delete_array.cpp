@@ -15,7 +15,7 @@ class Array{
             cout<<array.A[i]<<"\n";
         }
     }
-   
+//    not used function delete as compiler evalutes it as delete builtin funtion which is used for deleteing pointer 
     void delete1( Array *array, int  index){
         int x=0;
         if(index>0 && index<array->length){
