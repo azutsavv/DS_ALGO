@@ -37,17 +37,29 @@ void Create(int Arr[],int size){
 // insert at a given index
 
 void Insert_at_index(Node* P,int key,int pos){
-    Node* q=new Node;
-    q->data=key;
-    
-    for (int i = 0; i<pos-1 && P; i++)
-    {
-        P=P->next;
+   if (pos < 0) {
+        cout << "Invalid position\n";
+        return;
     }
-    q->next=P->next;
-    P->next=q;
+
+    Node* q = new Node;
+    q->data = key;
     
-    
+    if(pos == 0){
+        q->next = head;
+        head = q;
+    }
+    else{
+        for (int i = 0; i < pos - 1 && P; i++) {
+            P = P->next;
+        }
+        if (!P) {
+            cout << "Invalid position\n";
+            return;
+        }
+        q->next = P->next;
+        P->next = q;
+    } 
 }
 void Display(Node* P){
     while (P!=nullptr)
@@ -67,6 +79,7 @@ int main(){
     Insert_at_index(head,7,6);
     Insert_at_index(head,8,7);
     Insert_at_index(head,9,8);
+    Insert_at_index(head,76,76);
 
     Display(head);
 
