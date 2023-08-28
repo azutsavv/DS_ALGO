@@ -6,10 +6,10 @@ class Node{
     Node* next;
 
 };
-Node* head;
+Node* LL1;
+Node* LL2;
 
-
-void Create(int Arr[],int size){
+void Create(Node* &head,int Arr[],int size){
     Node* temp;
     Node* last;
 
@@ -30,19 +30,19 @@ void Create(int Arr[],int size){
         last->next=temp;
         last=temp;
 
-    }
+    } 
     
 }
 
-void reversed_LL_recursive(Node* q, Node* p){
-   if(p){
-    reversed_LL_recursive(p,p->next);
-    p->next=q;
-   }
-   else
-   head=q;
+void concate(Node* P,Node* Q){
+    while (P->next!=nullptr)
+    {
+        P=P->next;
+    }
+    P->next=Q;
+    Q=nullptr;
+    
 }
-
 
 void Display(Node* P){
     while (P!=nullptr)
@@ -56,15 +56,21 @@ void Display(Node* P){
 int main(){
 
     int A[]={1,2,3,4,5,6,7,8};
-    int size=(sizeof(A)/sizeof(A[0]));
+    int B[]={8,7,6,5,4,3,2,1};
+    int size1=(sizeof(A)/sizeof(A[0]));
+    int size2=(sizeof(B)/sizeof(B[0]));
     
-    Create(A,size);
-    Display(head);
+    Create(LL1,A,size1);
+    Create(LL2,B,size2);
+    Display(LL1);
     cout<<endl;
-    reversed_LL_recursive(NULL,head);
+    Display(LL2);
     cout<<endl;
-    Display(head);
+    concate(LL1,LL2);
+    Display(LL1);
+    cout<<endl;
+   
     
 
     return 0;
-}  
+}
